@@ -1,0 +1,3 @@
+# DOTFILES
+
+## Instrucciones de configuración
