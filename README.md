@@ -15,9 +15,10 @@
  3- Crear las variables del sistema necesarias para el correcto funcionamiento de las configuraciones (ver variables del sistema).
 
 ## Variables del sistema
-
+ En la documentación son referenciadas con el prefijo $ pero en windows se definen sin él.
 ### Neovim / Vim
- - $XDG_CONFIG_HOME  ~/.config   (solo es necesario en windows, y en vez de ~ es mejor poner a mano C:\Users\usuario)
+ - XDG_CONFIG_HOME  ~/.config   (solo es necesario en windows, y en vez de ~ es mejor poner a mano C:\Users\usuario)
+ - LANG		    en_US.utf-8 (Esto afecta a la configuración de cómo se muestran las fechas para más info :help language)
 
 ## TODOs
 
