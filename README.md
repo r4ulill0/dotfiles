@@ -23,5 +23,4 @@
 ## TODOs
 
  - Crear un script que automatice la creación de los enlaces simbólicos
- - Añadir fuente y personalizacion estética al init.vim
  - Añadir configuracion de vscode (?)

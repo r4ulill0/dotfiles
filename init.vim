@@ -26,4 +26,17 @@ syntax on
 
 call plug#begin($HOME . '/.vim/plugged')
 "Los plugins van aqui
+Plug 'sheerun/vim-polyglot'         "Pack de lenguajes
+Plug 'ghifarit53/tokyonight-vim'    "Colorines que funcionan bien con Polyglot
 call plug#end()
+
+" CONFIGURACION DE COLORINES
+set termguicolors
+
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 1
+
+colorscheme tokyonight
+
+highlight Normal ctermbg=NONE guibg=NONE            "_ 
+highlight! EndOfBuffer ctermbg=NONE guibg=NONE      "_|- Le quita el fondo para que salga el fondo del terminal
