@@ -8,11 +8,11 @@
 
 ## Instrucciones de configuración manual
 
- 1- Clonar repositorio en una carpeta. Ej. git clone urldelrepositorio .dotfiles/
- 2- Crear enlaces simbólicos en los lugares que corresponda que apunten a este repo local.
+ 1. Clonar repositorio en una carpeta. Ej. git clone urldelrepositorio .dotfiles/
+ 2. Crear enlaces simbólicos en los lugares que corresponda que apunten a este repo local.
     Ej. Ponerse en el directorio ~\.config\nvim y hacer mklink init.vim ~/.dotfiles/init.vim
     Esto dejará sincronizadas las configuraciones en todo el sistema, haciendo más sencillo actualizar entre diferentes PC's
- 3- Crear las variables del sistema necesarias para el correcto funcionamiento de las configuraciones (ver variables del sistema).
+ 3. Crear las variables del sistema necesarias para el correcto funcionamiento de las configuraciones (ver variables del sistema).
 
 ## Variables del sistema
  En la documentación son referenciadas con el prefijo $ pero en windows se definen sin él.
@@ -23,4 +23,5 @@
 ## TODOs
 
  - Crear un script que automatice la creación de los enlaces simbólicos
- - Añadir fuente y personalizacion estética al gitconfig
+ - Añadir fuente y personalizacion estética al init.vim
+ - Añadir configuracion de vscode (?)
