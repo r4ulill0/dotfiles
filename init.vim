@@ -24,6 +24,14 @@ set updatetime=50	"Tiempo de refresco del archivo de backup en milisegundos
 "set shortmess		"Esto deshabilita ciertos mensajes de error de principiante
 syntax on
 
+" Instalacion automática de vimplug
+let data_dir= has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+
 call plug#begin($HOME . '/.vim/plugged')
 "Los plugins van aqui
 Plug 'sheerun/vim-polyglot'         "Pack de lenguajes
@@ -40,3 +48,4 @@ colorscheme tokyonight
 
 highlight Normal ctermbg=NONE guibg=NONE            "_ 
 highlight! EndOfBuffer ctermbg=NONE guibg=NONE      "_|- Le quita el fondo para que salga el fondo del terminal
+set guifont=tty-hack
