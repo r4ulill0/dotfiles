@@ -1,0 +1,23 @@
+[bar/mybar]
+modules-right = date battery
+modules-center = cpu memory
+
+[module/date]
+type = internal/date
+date = %Y-%m-%d%
+
+[module/battery]
+type = internal/battery
+full-at = 99
+battery = BAT0
+adapter = AC0
+poll-interval = 60
+
+[module/cpu]
+type = internal/cpu
+label = CPU %percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 3
+label = RAM %percentage_used%%
