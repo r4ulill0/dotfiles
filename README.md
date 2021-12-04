@@ -5,6 +5,7 @@
 
 ## Notas a tener en cuenta en linux
  - El enlace simbólico que nos interesa hacer es blando. Hay que recordar que en linux el enlace por defecto será duro, habrá que ejecutar ln -s  (soft).
+ - Es necesario crear el directorio $HOME/wallpapers para poder tener los fondos de nitrogen al iniciar sesión
 
 ## Instrucciones de configuración manual
 
@@ -17,8 +18,9 @@
 ## Variables del sistema
  En la documentación son referenciadas con el prefijo $ pero en windows se definen sin él.
 ### Neovim / Vim
- - XDG_CONFIG_HOME  ~/.config   (solo es necesario en windows, y en vez de ~ es mejor poner a mano C:\Users\usuario)
- - LANG		    en_US.utf-8 (Esto afecta a la configuración de cómo se muestran las fechas para más info :help language)
+ - Variable | Valor | Observaciones
+ - XDG_CONFIG_HOME | ~/.config | (solo es necesario en windows, y en vez de ~ es mejor poner a mano C:\Users\usuario)
+ - LANG	| en_US.utf-8 | (Esto afecta a la configuración de cómo se muestran las fechas para más info :help language)
 
 ## TODOs
 
