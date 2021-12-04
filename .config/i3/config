@@ -21,6 +21,7 @@ font pango:monospace 8
 
 # Personalizacion añadida
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
+exec_always nitrogen --random --set-zoom-fill $HOME/wallpapers
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
