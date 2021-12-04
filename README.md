@@ -18,9 +18,11 @@
 ## Variables del sistema
  En la documentación son referenciadas con el prefijo $ pero en windows se definen sin él.
 ### Neovim / Vim
- - Variable | Valor | Observaciones
- - XDG_CONFIG_HOME | ~/.config | (solo es necesario en windows, y en vez de ~ es mejor poner a mano C:\Users\usuario)
- - LANG	| en_US.utf-8 | (Esto afecta a la configuración de cómo se muestran las fechas para más info :help language)
+
+| Variable |Valor | Observaciones |
+| -------- | ---- | ------------- |
+| XDG_CONFIG_HOME | ~/.config | Solo es necesario en windows, y en vez de ~ es mejor poner a mano C:\Users\usuario|
+| LANG	| en_US.utf-8 | Esto afecta a la configuración de cómo se muestran las fechas para más info :help language|
 
 ## TODOs
 
