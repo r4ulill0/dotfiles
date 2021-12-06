@@ -42,6 +42,7 @@ Plug 'nvim-telescope/telescope.nvim'    "Fuzzy finder para abrir archivos
                                         " Telescope tiene mas dependencias
                                         " recomendadas pero solo he instalado las
                                         " indispensables
+Plug 'mfussenegger/nvim-jdtls'          " Language server para java
 
 call plug#end()
 

@@ -14,6 +14,7 @@
     Ej. Ponerse en el directorio ~\.config\nvim y hacer mklink init.vim ~/.dotfiles/init.vim
     Esto dejará sincronizadas las configuraciones en todo el sistema, haciendo más sencillo actualizar entre diferentes PC's
  3. Crear las variables del sistema necesarias para el correcto funcionamiento de las configuraciones (ver variables del sistema).
+ 4. Instalar los language servers que usará nvim como cliente para tener funcionalidades de IDE avanzadas
 
 ## Variables del sistema
  En la documentación son referenciadas con el prefijo $ pero en windows se definen sin él.
