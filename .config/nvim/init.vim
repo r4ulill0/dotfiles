@@ -34,9 +34,27 @@ endif
 
 call plug#begin($HOME . '/.vim/plugged')
 "Los plugins van aqui
-Plug 'sheerun/vim-polyglot'         "Pack de lenguajes
-Plug 'ghifarit53/tokyonight-vim'    "Colorines que funcionan bien con Polyglot
+Plug 'sheerun/vim-polyglot'             "Pack de lenguajes
+Plug 'ghifarit53/tokyonight-vim'        "Colorines que funcionan bien con Polyglot
+Plug 'nvim-lua/plenary.nvim'            "Dependencias de telescope
+Plug 'nvim-telescope/telescope.nvim'    "Fuzzy finder para abrir archivos 
+                                        " comodamente
+                                        " Telescope tiene mas dependencias
+                                        " recomendadas pero solo he instalado las
+                                        " indispensables
+
 call plug#end()
+
+" MAPEOS GENERALES
+nnoremap <Space> <nop>
+let mapleader = " "
+
+" CONFIGURACION DE TELESCOPE
+" Using Lua functions
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 " CONFIGURACION DE COLORINES
 set termguicolors
