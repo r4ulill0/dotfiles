@@ -20,7 +20,6 @@ vim.opt.signcolumn='yes'	--Añade una columna adicional para símbolos (las marc
 vim.opt.colorcolumn='80'	--Marca la columna 80. Útil para saber cuando estás identando mucho y toca refactor
 vim.opt.updatetime=50	--Tiempo de refresco del archivo de backup en milisegundos
 --vim.opt.shortmess='true'		--Esto deshabilita ciertos mensajes de error de principiante
---syntax = 'on'
 vim.cmd([[syntax on]])
 
 -- Instalacion automática de vimplug
@@ -46,6 +45,16 @@ Plug 'nvim-telescope/telescope.nvim'    --[[Fuzzy finder para abrir archivos
                                          indispensables ]]
 Plug 'mfussenegger/nvim-jdtls'          -- Language server para java
 
+Plug 'neovim/nvim-lspconfig'            -- Configs for lsp
+
+Plug 'hrsh7th/cmp-nvim-lsp'             -- Autocompletado
+Plug 'hrsh7th/cmp-buffer'               --|
+Plug 'hrsh7th/cmp-path'                 --|
+Plug 'hrsh7th/cmp-cmdline'              --|
+Plug 'hrsh7th/nvim-cmp'                 --|
+Plug 'SirVer/ultisnips'                 -- Plugin de snipets super completo
+Plug 'quangnguyen30192/cmp-nvim-ultisnips' -- Adaptador del plugin para nvim
+
 vim.call('plug#end')
 
 -- MAPEOS GENERALES
@@ -60,6 +69,70 @@ vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', {noremap = true})
+
+-- CONFIGURACION DE LSP
+
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}               -- Obliga al usuario a seleccionar una de las opciones
+
+-- CONFIGURACION DE AUTOCOMPLETADO (CMP)
+local cmp = require'cmp'
+
+cmp.setup({
+    snippet = {
+    expand = function(args)
+    vim.fn["UltiSnips#Anon"](args.body)
+    end,
+    },
+    mapping = {
+        ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+        ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+        ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+        ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+        ['<C-e>'] = cmp.mapping({
+            i = cmp.mapping.abort(),
+            c = cmp.mapping.close(),
+        }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    },
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'ultisnips' }, -- For ultisnips users.
+        }, {
+        { name = 'buffer' },
+    })
+})
+
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+        { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it. 
+    }, {
+        { name = 'buffer' },
+    })
+})
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
+    sources = {
+        { name = 'buffer' }
+    }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+        { name = 'cmdline' }
+    })
+})
+
+-- Setup lspconfig.
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+require('lspconfig')['java'].setup {
+capabilities = capabilities
+}
 
 -- CONFIGURACION DE COLORINES
 vim.opt.termguicolors=true
