@@ -2,6 +2,7 @@
 
 ## Notas a tener en cuenta en windows
  - Es necesario tener el modo desarrollador activado (al menos en w10) para tener acceso a la herramienta mklink. Y además esta solo está disponible en cmd.exe (no está en powershell por ejemplo) ya que es un built-in, no un ejecutable.
+ - Debido a que en windows va todo muy mal, la única configuración que da soporte este repositorio es usando windows subsystem for linux (WSL). Hay que tener en cuenta que funciona muy mal al editar archivos que están fuera del subsistema, así que de momento es mejor evitarlo.
 
 ## Notas a tener en cuenta en linux
  - El enlace simbólico que nos interesa hacer es blando. Hay que recordar que en linux el enlace por defecto será duro, habrá que ejecutar ln -s  (soft).
@@ -22,7 +23,7 @@
 
 | Variable |Valor | Observaciones |
 | -------- | ---- | ------------- |
-| XDG_CONFIG_HOME | ~/.config | Solo es necesario en windows, y en vez de ~ es mejor poner a mano C:\Users\usuario|
+| XDG_CONFIG_HOME | ~/.config | Solo es necesario en windows (aunque puede ser conveniente ponerlo en linux si no pilla la configuración de primeras), y en vez de ~ es mejor poner a mano C:\Users\usuario|
 | LANG	| en_US.utf-8 | Esto afecta a la configuración de cómo se muestran las fechas para más info :help language|
 
 ## TODOs
