@@ -36,7 +36,7 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim/plugged')
 --Los plugins van aqui
 Plug 'sheerun/vim-polyglot'             --Pack de lenguajes
-Plug 'ghifarit53/tokyonight-vim'        --Colorines que funcionan bien con Polyglot
+Plug 'folke/tokyonight.nvim'        --Colorines que funcionan bien con Polyglot
 Plug 'nvim-lua/plenary.nvim'            --Dependencias de telescope
 Plug 'nvim-telescope/telescope.nvim'    --[[Fuzzy finder para abrir archivos 
                                         -- comodamente
@@ -169,10 +169,10 @@ end
 -- CONFIGURACION DE COLORINES
 vim.opt.termguicolors=true
 
-vim.g.tokyonight_style = "night" -- available: night, storm
+vim.g.tokyonight_style = "storm" -- available: night, storm
 vim.g.tokyonight_enable_italic = "1"
 
-colorscheme=tokyonight
+vim.cmd([[colorscheme tokyonight]])
 
 vim.cmd([[
     highlight Normal ctermbg=NONE guibg=NONE            "--_ 
