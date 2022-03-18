@@ -55,6 +55,7 @@ Plug 'hrsh7th/cmp-nvim-lsp-signature-help' --|
 Plug 'hrsh7th/nvim-cmp'                    --|
 Plug 'SirVer/ultisnips'                    -- Plugin de snipets super completo
 Plug 'quangnguyen30192/cmp-nvim-ultisnips' -- Adaptador del plugin para nvim
+Plug 'nvim-treesitter/nvim-treesitter'
 
 vim.call('plug#end')
 
