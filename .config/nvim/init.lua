@@ -65,6 +65,13 @@ vim.g.mapleader=" "
 -- nnoremap <Space> <nop>
 -- let mapleader = " "
 
+-- CONFIGURACION DE TREESITTER
+require('nvim-treesitter.configs').setup {
+    highlight = {
+        enable = true
+    },
+
+}
 -- CONFIGURACION DE TELESCOPE
 -- Using Lua functions
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', {noremap = true})
@@ -154,7 +161,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pylsp', 'rust_analyzer' }
+local servers = { 'pylsp', 'rust_analyzer', 'eslint' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
