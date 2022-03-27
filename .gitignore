@@ -4,3 +4,9 @@
 .config/pulse
 .config/nitrogen
 .config/gtk-2.0
+.config/QtProject.conf
+.config/activitywatch/
+.config/calibre/
+.config/mimeapps.list
+.config/neofetch/
+.config/nvim/plugged/
