@@ -56,6 +56,7 @@ Plug 'hrsh7th/nvim-cmp'                    --|
 Plug 'SirVer/ultisnips'                    -- Plugin de snipets super completo
 Plug 'quangnguyen30192/cmp-nvim-ultisnips' -- Adaptador del plugin para nvim
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'mickael-menu/zk-nvim'                -- Plugin para manejar cómodamente un sistema zettelkasten
 
 vim.call('plug#end')
 
@@ -78,6 +79,7 @@ vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', {noremap = true})
+
 
 -- CONFIGURACION DE LSP
 
@@ -161,7 +163,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pylsp', 'rust_analyzer', 'eslint' }
+local servers = { 'pylsp', 'rust_analyzer', 'eslint', 'sumneko_lua' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
@@ -172,6 +174,23 @@ for _, lsp in pairs(servers) do
     }
   }
 end
+
+-- CONFIGURACION DE ZK-NVIM
+require("zk").setup({
+    picker = "telescope",
+    lsp = {
+      config = {
+        on_attach = on_attach,
+        capabilities = capabilities,
+      },
+    },
+  });
+
+vim.api.nvim_set_keymap("n", "<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>zo", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>zt", "<Cmd>ZkTags<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>zf", "<Cmd>ZkNotes { sort = { 'modified' }, match = vim.fn.input('Search: ') }<CR>", opts)
+vim.api.nvim_set_keymap("v", "<leader>zf", ":'<,'>ZkMatch<CR>", opts)
 
 
 -- CONFIGURACION DE COLORINES

@@ -25,6 +25,7 @@
 | -------- | ---- | ------------- |
 | XDG_CONFIG_HOME | ~/.config | Solo es necesario en windows (aunque puede ser conveniente ponerlo en linux si no pilla la configuración de primeras), y en vez de ~ es mejor poner a mano C:\Users\usuario|
 | LANG	| en_US.utf-8 | Esto afecta a la configuración de cómo se muestran las fechas para más info :help language|
+| ZK_NOTEBOOK_DIR | ~/zettelkasten-knowledge-database | Exportada por defecto en .bashrc |
 
 ## TODOs
 
