@@ -1,6 +1,13 @@
 #!/bin/sh
 
 killall -q polybar
-polybar mybar 2>&1 & disown
+
+if type "xrandr"; then
+  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+    MONITOR=$m polybar --reload &
+  done
+else
+  polybar --reload &
+fi
 
 echo "Polybar launched..."
