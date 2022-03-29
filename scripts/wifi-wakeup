@@ -1,0 +1,11 @@
+#!/bin/sh
+
+case $1/$2 in
+    pre/*)
+        modprobe -r mt76x0e mt76xx
+        sleep 1
+        ;;
+    post/*)
+        modprobe mt76x0e mt76xx
+        ;;
+esac

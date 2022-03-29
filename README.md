@@ -7,7 +7,7 @@
 ## Notas a tener en cuenta en linux
  - El enlace simbólico que nos interesa hacer es blando. Hay que recordar que en linux el enlace por defecto será duro, habrá que ejecutar ln -s  (soft).
  - Es necesario crear el directorio $HOME/wallpapers para poder tener los fondos de nitrogen al iniciar sesión
-
+ - El script wifi-wakeup (para hacer funcionar el driver wifi MT7630E) necesita tener permisos de ejecución y estar en /lib/systemd/system-sleep/wifi-wakeup para funcionar. Con enlace simbólico funciona también.
 ## Instrucciones de configuración manual
 
  1. Clonar repositorio en una carpeta. Ej. git clone urldelrepositorio .dotfiles/
