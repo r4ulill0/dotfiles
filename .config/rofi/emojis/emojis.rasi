@@ -65,7 +65,7 @@ listview {
 element {
     border:  0;
     padding:      1px;
-    font:         "monospace 8";
+    font:         "monospace 20";
     orientation: vertical;
 }
 element-icon {
