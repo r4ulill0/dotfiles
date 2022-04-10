@@ -1,0 +1,5 @@
+[Shortcuts]
+edit_redo=Ctrl+Shift+Z; Ctrl+Alt+Shift+U
+edit_undo=Ctrl+Z; Ctrl+Alt+Shift+Z
+mirrorImageHorizontal=Ctrl+Alt+Shift+M
+reset_canvas_rotation=Ctrl+Alt+Shift+D
