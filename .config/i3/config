@@ -22,7 +22,7 @@ font pango:tty-hack 8
 # Personalizacion añadida
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
 exec_always picom -b
-exec_always feh --bg-fill --randomize ~/wallpapers/*
+exec_always feh --no-fehbg --bg-fill --randomize ~/wallpapers/*
 exec_always $HOME/.dotfiles/scripts/huion_mappings.sh 
 exec_always aw-server & # Activity watch 
 exec aw-watcher-afk &

@@ -1,6 +1,6 @@
 #!/bin/sh
 
 $HOME/.config/polybar/launch.sh &
-feh --bg-fill --randomize ~/wallpapers/*
+feh --no-fehbg --bg-fill --randomize ~/wallpapers/*
 $HOME/.dotfiles/scripts/huion_conf.sh
 
