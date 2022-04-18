@@ -10,3 +10,12 @@
 .config/mimeapps.list
 .config/neofetch/
 .config/nvim/plugged/
+.config/Cypress
+.config/cef_user_data
+.config/kritarc
+.config/kritadisplayrc
+.config/phoenix-manager
+.config/obs-studio/logs
+.config/obs-studio/profiler_data/
+.config/obs-studio/plugin_config/obs-browser/
+.config/obs-studio/basic/profiles/**/service.json
