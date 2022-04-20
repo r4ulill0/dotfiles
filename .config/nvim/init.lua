@@ -1,27 +1,3 @@
-vim.opt.helplang="es,en"	--Cuando se abra la ayuda, primero intentar abrirla en castellano y luego en inglés
-vim.opt.relativenumber=true 	--Activa los números que muestran la posicion relativa
-vim.opt.number=true		--Pone el número de línea en la línea del cursor
-vim.opt.hidden=true 		--Te permite dejar buffers en segundo plano con ediciones sin guardar
-vim.opt.encoding='utf-8'
-vim.opt.tabstop=4		--
-vim.opt.softtabstop=4 	-- |-La tabulacion es 4 espacios (tanto automática como al apretar TAB)
-vim.opt.shiftwidth=4	--
-vim.opt.smartindent=true		--Auto indentado
-vim.opt.expandtab=true		--Convierte las tabulaciones en espacios
-vim.opt.exrc=true		--Coge la configuración local del directorio (init.vim) en vez de cualquier otra
-vim.opt.hlsearch=false		--Desactiva el iluminado de búsqueda después de buscar (mientras escribes la búsqueda sí que funciona)
-vim.opt.wrap=false		--Desactiva el truncado de línea cuando se supera el ancho de ventana
-vim.opt.ignorecase=true		--¬
-vim.opt.smartcase=true		--|- Hace búsquedas sensibles a mayúsculas solo si usas mayúsculas en la búsqueda
-vim.opt.swapfile=false		--Desactiva los archivos de swap (son ultra molestos)
-vim.opt.backup=false		--Desactiva los backups parcialmente (:help backup para más info)
-vim.opt.scrolloff=8		--Empieza a hacer scroll X líneas antes de llegar a los límites de la ventana
-vim.opt.signcolumn='yes'	--Añade una columna adicional para símbolos (las marcas de error del linter por ejemplo)
-vim.opt.colorcolumn='80'	--Marca la columna 80. Útil para saber cuando estás identando mucho y toca refactor
-vim.opt.updatetime=50	--Tiempo de refresco del archivo de backup en milisegundos
---vim.opt.shortmess='true'		--Esto deshabilita ciertos mensajes de error de principiante
-vim.cmd([[syntax on]])
-
 -- Instalacion automática de vimplug
 vim.cmd([[
 let data_dir= has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -31,38 +7,13 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 ]])
 
+require('plugconf.plugins')
+require('general')
 
-local Plug = vim.fn['plug#']
-vim.call('plug#begin', '~/.config/nvim/plugged')
---Los plugins van aqui
-Plug 'sheerun/vim-polyglot'             --Pack de lenguajes
-Plug 'folke/tokyonight.nvim'        --Colorines que funcionan bien con Polyglot
-Plug 'nvim-lua/plenary.nvim'            --Dependencias de telescope
-Plug 'nvim-telescope/telescope.nvim'    --[[Fuzzy finder para abrir archivos 
-                                        -- comodamente
-                                         Telescope tiene mas dependencias
-                                         recomendadas pero solo he instalado las
-                                         indispensables ]]
-Plug 'mfussenegger/nvim-jdtls'          -- Language server para java
-
-Plug 'neovim/nvim-lspconfig'            -- Configs for lsp
-
-Plug 'hrsh7th/cmp-nvim-lsp'                -- Autocompletado
-Plug 'hrsh7th/cmp-buffer'                  --|
-Plug 'hrsh7th/cmp-path'                    --|
-Plug 'hrsh7th/cmp-cmdline'                 --|
-Plug 'hrsh7th/cmp-nvim-lsp-signature-help' --|
-Plug 'hrsh7th/nvim-cmp'                    --|
-Plug 'SirVer/ultisnips'                    -- Plugin de snipets super completo
-Plug 'quangnguyen30192/cmp-nvim-ultisnips' -- Adaptador del plugin para nvim
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'mickael-menu/zk-nvim'                -- Plugin para manejar cómodamente un sistema zettelkasten
-
-vim.call('plug#end')
 
 -- MAPEOS GENERALES
-vim.api.nvim_set_keymap('n', '<Space>', '', {noremap = true})
-vim.g.mapleader=" "
+local mappings = require 'mappings'
+mappings.general_mappings()
 -- nnoremap <Space> <nop>
 -- let mapleader = " "
 
@@ -74,46 +25,22 @@ require('nvim-treesitter.configs').setup {
 
 }
 -- CONFIGURACION DE TELESCOPE
--- Using Lua functions
-vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>', {noremap = true})
-
+mappings.telescope_mappings()
 
 -- CONFIGURACION DE LSP
 
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}               -- Obliga al usuario a seleccionar una de las opciones
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
-vim.api.nvim_set_keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
+  mappings.common_lsp_mappings(bufnr)
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
 -- CONFIGURACION DE AUTOCOMPLETADO (CMP)
@@ -163,7 +90,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pylsp', 'rust_analyzer', 'eslint', 'sumneko_lua' }
+local servers = { 'pylsp', 'rust_analyzer', 'eslint', 'sumneko_lua', 'texlab' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
@@ -185,24 +112,3 @@ require("zk").setup({
       },
     },
   });
-
-vim.api.nvim_set_keymap("n", "<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>zo", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>zt", "<Cmd>ZkTags<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>zf", "<Cmd>ZkNotes { sort = { 'modified' }, match = vim.fn.input('Search: ') }<CR>", opts)
-vim.api.nvim_set_keymap("v", "<leader>zf", ":'<,'>ZkMatch<CR>", opts)
-
-
--- CONFIGURACION DE COLORINES
-vim.opt.termguicolors=true
-
-vim.g.tokyonight_style = "storm" -- available: night, storm
-vim.g.tokyonight_enable_italic = "1"
-
-vim.cmd([[colorscheme tokyonight]])
-
-vim.cmd([[
-    highlight Normal ctermbg=NONE guibg=NONE            "--_ 
-    highlight! EndOfBuffer ctermbg=NONE guibg=NONE      "--_|- Le quita el fondo para que salga el fondo del terminal
-]])
-vim.opt.guifont="tty-hack"
