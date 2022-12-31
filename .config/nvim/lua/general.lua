@@ -13,7 +13,6 @@ vim.opt.hlsearch=false		--Desactiva el iluminado de búsqueda después de buscar
 vim.opt.wrap=false		--Desactiva el truncado de línea cuando se supera el ancho de ventana
 vim.opt.ignorecase=true		--¬
 vim.opt.smartcase=true		--|- Hace búsquedas sensibles a mayúsculas solo si usas mayúsculas en la búsqueda
-vim.opt.swapfile=false		--Desactiva los archivos de swap (son ultra molestos)
 vim.opt.backup=false		--Desactiva los backups parcialmente (:help backup para más info)
 vim.opt.scrolloff=8		--Empieza a hacer scroll X líneas antes de llegar a los límites de la ventana
 vim.opt.signcolumn='yes'	--Añade una columna adicional para símbolos (las marcas de error del linter por ejemplo)

@@ -28,6 +28,9 @@ exec_always aw-server & # Activity watch
 exec aw-watcher-afk &
 exec aw-watcher-window &
 
+floating_minimum_size 75 x 50
+floating_maximum_size 640 x 480 # Para que los popUps cojan en pantalla
+
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 # exec --no-startup-id dex --autostart --environment i3
@@ -63,6 +66,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id dmenu_run
 bindsym $mod+d exec "rofi -modi drun,run -show drun -theme purple"
 bindsym $mod+m exec "cat $HOME/.config/rofi/emojis/emojis.txt | rofi -dmenu -i -matching fuzzy -theme $HOME/.config/rofi/emojis/emojis.rasi | awk '{printf $1}'| xclip -selection clipboard"
+bindsym Print exec "maim $HOME/capturasDePantalla/$(date +%s).png"
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
