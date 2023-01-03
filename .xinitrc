@@ -3,4 +3,6 @@
 font tty-hack
 # Descomentar para poder debuggear
 #exec i3 --shmlog-size=26214400 &> $HOME/logMaster.txt
+
+pulseaudio --start
 exec i3
