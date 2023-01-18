@@ -1,0 +1,18 @@
+include "%L"
+
+<grave> <a> : "á"
+<grave> <e> : "é"
+<grave> <i> : "í"
+<grave> <o> : "ó"
+<grave> <u> : "ú"
+<grave> <n> : "ñ"
+<grave> <A> : "Á"
+<grave> <E> : "É"
+<grave> <I> : "Í"
+<grave> <O> : "Ó"
+<grave> <U> : "Ú"
+<grave> <N> : "Ñ"
+
+<grave> <grave> : "`"
+<grave> <space> : "` "
+
