@@ -20,14 +20,15 @@ font pango:tty-hack 8
 #font pango:DejaVu Sans Mono 8
 
 # Personalizacion añadida
+exec_always mainDetected=$(autorandr --detected |grep ^main) && autorandr $mainDetected # Usamos preferentemente el perfil main (para no pillar multi sin querer al matchear ambos)
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
 exec_always picom -b
 exec_always feh --no-fehbg --bg-fill --randomize ~/wallpapers/*
 exec_always conky
 exec_always $HOME/.dotfiles/scripts/huion_mappings.sh 
-exec_always aw-server & # Activity watch 
-exec aw-watcher-afk &
-exec aw-watcher-window &
+#exec_always aw-server & # Activity watch 
+#exec aw-watcher-afk &
+#exec aw-watcher-window &
 
 floating_minimum_size 75 x 50
 floating_maximum_size 640 x 480 # Para que los popUps cojan en pantalla
@@ -67,6 +68,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id dmenu_run
 bindsym $mod+d exec "rofi -modi drun,run -show drun -theme purple"
 bindsym $mod+m exec "cat $HOME/.config/rofi/emojis/emojis.txt | rofi -dmenu -i -matching fuzzy -theme $HOME/.config/rofi/emojis/emojis.rasi | awk '{printf $1}'| xclip -selection clipboard"
+bindsym $mod+p exec "randrConf=$(autorandr --detected | rofi -dmenu -matching prefix) && autorandr $randrConf"
 bindsym Print exec "maim $HOME/capturasDePantalla/$(date +%s).png"
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
