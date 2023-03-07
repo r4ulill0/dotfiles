@@ -1,0 +1,8 @@
+XDG_DESKTOP_DIR="$HOME/utils/escritorio"
+XDG_DOCUMENTS_DIR="$HOME/utils/programdocs"
+XDG_DOWNLOAD_DIR="$HOME/bigfiles/descargas"
+XDG_MUSIC_DIR="$HOME/media/music"
+XDG_PICTURES_DIR="$HOME/gestion/docs/imagenes"
+XDG_PUBLICSHARE_DIR="$HOME/utils/xdg_publicshare"
+XDG_TEMPLATES_DIR="$HOME/utils/templates"
+XDG_VIDEOS_DIR="$HOME/media/video"
