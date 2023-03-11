@@ -1,0 +1,9 @@
+[Unit]
+Description=Ejecuta backup semanalmente (Intenta hacerlo después de cada lunes)
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+
+[Install]
+WantedBy=timers.target

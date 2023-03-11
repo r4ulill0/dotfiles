@@ -9,15 +9,43 @@
  - Es necesario crear el directorio $HOME/wallpapers para poder tener los fondos de feh al iniciar sesión
  - El script wifi-wakeup (para hacer funcionar el driver wifi MT7630E) necesita tener permisos de ejecución y estar en /lib/systemd/system-sleep/wifi-wakeup para funcionar. Con enlace simbólico funciona también.
  - Para instalar correctamente la configuracion de teclado del moonlander, ejecutar `localectl set-x11-keymap us pc105 dvorak Compose`. La opción Compose permite añadir las deadkeys del archivo .XCompose al layout.
+ - Es importante crear la estructura de carpetas (ver subsección) correctamente para que funcionen ciertos scripts, configuraciones y variables del sistema.
+
+### Estructura de carpetas
+```mermaid
+graph TD;
+    home --> bigfiles
+    home --> utils
+    home --> gestion
+    home --> media
+    home --> proyects
+    home --> .config
+
+    bigfiles --> descargas
+
+    utils --> capturasDePantalla
+    utils --> wallpapers
+    utils --> zettelkasten-knowledge-database
+
+    gestion --> docs
+    gestion --> dumps
+
+    media --> games
+    media --> music
+    media --> video
+
+    proyects --> repositorios
+```
 
 ## Instrucciones de configuración manual
 
  1. Clonar repositorio en una carpeta. Ej. git clone urldelrepositorio .dotfiles/
  2. Crear enlaces simbólicos en los lugares que corresponda que apunten a este repo local.
     Ej. Ponerse en el directorio ~\.config\nvim y hacer mklink init.vim ~/.dotfiles/init.vim
-    Esto dejará sincronizadas las configuraciones en todo el sistema, haciendo más sencillo actualizar entre diferentes PC's
- 3. Crear las variables del sistema necesarias para el correcto funcionamiento de las configuraciones (ver variables del sistema).
- 4. Instalar los language servers que usará nvim como cliente para tener funcionalidades de IDE avanzadas
+    Esto dejará sincronizadas las configuraciones en todo el sistema, haciendo más sencillo actualizar entre diferentes PC's.
+ 3. Crear la estructura de carpetas (es estrictamente necesario en linux).
+ 4. Crear las variables del sistema necesarias para el correcto funcionamiento de las configuraciones (ver variables del sistema).
+ 5. Instalar los language servers que usará nvim como cliente para tener funcionalidades de IDE avanzadas.
 
 ## Variables del sistema
  En la documentación son referenciadas con el prefijo $ pero en windows se definen sin él.
@@ -30,7 +58,18 @@
 | LANG	| en_US.utf-8 | Esto afecta a la configuración de cómo se muestran las fechas para más info :help language|
 | ZK_NOTEBOOK_DIR | ~/zettelkasten-knowledge-database | Exportada por defecto en .bashrc |
 
+### Linux
+
+| Variable |Valor | Observaciones |
+| -------- | ---- | ------------- |
+| BACKUPDIRS | Lista de los directorios (separados por ':' como en $PATH) que vayan a ser tratados por el script de backup | |
+
+#### Utilidades Systemd
+
+ - backup.timer y backup.service para realizar copias de seguridad
+
 ## TODOs
 
  - Crear un script que automatice la creación de los enlaces simbólicos
  - Añadir configuracion de vscode (?)
+ - Automatizar avisos automáticos al ejecutar el script de backup o algún timer de systemd y se quede sin espacio (o haya demasiado peso en los archivos guardados)    

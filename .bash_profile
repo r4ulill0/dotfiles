@@ -2,12 +2,7 @@
 # ~/.bash_profile
 #
 
-export XDG_CONFIG_HOME=$HOME/.config
-export ZK_NOTEBOOK_DIR=$HOME/utils/zettelkasten-knowledge-database
-export EDITOR=nvim
-export LESSHISTFILE=$HOME/.cache/.lesshst
-export XCOMPOSEFILE=$XDG_CONFIG_HOME/.XCompose
-export GTK_IM_MODULE=xim
+source $HOME/.config/env_var.sh
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 

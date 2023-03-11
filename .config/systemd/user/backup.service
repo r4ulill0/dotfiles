@@ -1,0 +1,10 @@
+[Unit]
+Description=Back up de los archivos importantes a la nube
+Wants=network-online.target
+RefuseManualStart=no
+RefuseManualStop=yes
+
+[Service]
+Type=oneshot
+ExecStartPre=/%h/.config/env_var.sh
+ExecStart=/%h/.dotfiles/scripts/backup.sh
