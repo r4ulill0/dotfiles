@@ -18,6 +18,9 @@ mappings.general_mappings()
 -- let mapleader = " "
 
 -- CONFIGURACION DE TREESITTER
+require('nvim-treesitter.install').compilers = {
+    'clang++'
+}
 require('nvim-treesitter.configs').setup {
     highlight = {
         enable = true
@@ -86,22 +89,51 @@ sources = cmp.config.sources({
     })
 })
 
+-- Mason (lsp, dap, linters and formatters)
+require('mason').setup()
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local mason_lspconfig = require('mason-lspconfig')
+local servers = {
+	pylsp = {},
+	rust_analyzer = {},
+	clangd = {},
+	eslint = {},
+	texlab = {},
 
+    lua_ls = {
+        Lua = {
+            workspace = {checkThirdParty = false },
+            telemetry = {enable=false},
+        },
+    },
+}
+mason_lspconfig.setup {
+    ensure_installed = vim.tbl_keys(servers)
+}
+mason_lspconfig.setup_handlers {
+    function(server_name)
+        require('lspconfig')[server_name].setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = servers[server_name]
+        }
+    end
+}
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pylsp', 'rust_analyzer', 'eslint', 'sumneko_lua', 'texlab' }
-for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
-    }
-  }
-end
+local null_ls = require("null-ls")
+
+null_ls.setup({
+    sources = {
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.diagnostics.eslint,
+        null_ls.builtins.completion.spell,
+    },
+})
+
+require('debuggers').config_debugger()
+mappings.debug_mappings()
 
 -- CONFIGURACION DE ZK-NVIM
 require("zk").setup({

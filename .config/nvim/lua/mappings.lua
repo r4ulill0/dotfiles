@@ -44,4 +44,16 @@ function M.common_lsp_mappings(bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
+function M.debug_mappings()
+
+    vim.api.nvim_set_keymap('n', '<leader>tc', '<cmd>lua require(\'dap\').continue()<cr>', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<leader>to', '<cmd>lua require(\'dap\').step_over()<cr>', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<leader>ti', '<cmd>lua require(\'dap\').step_into()<cr>', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<leader>tu', '<cmd>lua require(\'dap\').step_out()<cr>', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<leader>tb', '<cmd>lua require(\'dap\').toggle_breakpoint()<cr>', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<leader>tB', '<cmd>lua require(\'dap\').set_breakpoint(vim.fn.input(\'Breakpoint condition: \'))<cr>', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<leader>tl', '<cmd>lua require(\'dap\').set_breakpoint(nil, nil, vim.fn.input(\'Log point message: \'))<cr>', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<leader>tr', '<cmd>lua require(\'dap\').repl.open()<cr>', {noremap = true})
+end
+
 return M
