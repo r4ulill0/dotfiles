@@ -21,13 +21,13 @@ function M.config_debugger()
     local mason_dap = require('mason-nvim-dap')
     mason_dap.setup({
         automatic_setup=true,
+        handlers={},
     })
-    mason_dap.setup_handlers({})
     local null_ls = require('mason-null-ls')
     null_ls.setup({
         automatic_setup=true,
+        handlers={},
     })
-    null_ls.setup_handlers({})
 end
 
 return M
