@@ -21,17 +21,26 @@ do
     if (( $uploadsize>$megasize )); then echo "El backup es más grande que el espacio disponible";return 1; fi
     sizes=($(rclone  ls --mega-user $(gpg -dq --default-recipient-self $HOME/.gnupg/megauser.asc| cat) --mega-pass $(gpg -dq --default-recipient-self $HOME/.gnupg/megacred.asc| cat|rclone obscure -) megaupload: | awk '{print $1}'))
     names=($(rclone  ls --mega-user $(gpg -dq --default-recipient-self $HOME/.gnupg/megauser.asc| cat) --mega-pass $(gpg -dq --default-recipient-self $HOME/.gnupg/megacred.asc| cat|rclone obscure -) megaupload: | awk '{print $2}'))
+    total=0
+    for s in "${sizes[@]}"; do
+        total=$((total+s))
+    done
     i=0
     acumulated=0
     declare -a todelete
-    while (( $acumulated<$uploadsize ))
-    do
-        acumulated=$(($acumulated + ${sizes[$i]}))
-        todelete[$i]=${names[$i]}
-        i=$(( $i+1 ))
-    done
+    if (( $megasize<$(($total+$uploadsize)) ));
+    then
+        echo "El peso total que habrá en el repositorio será "$(($total+$uploadsize))" pero solo se dispone de "$megasize
+        echo "Se procede a calcular qué archivos es necesario borrar para poder actualizar la copia de seguridad..."
+        while (( $(($total+$uploadsize-$acumulated))>$megasize ))
+        do
+            acumulated=$(($acumulated + ${sizes[$i]}))
+            todelete[$i]=${names[$i]}
+            i=$(( $i+1 ))
+        done;
+    fi
     echo "Se van a liberar "$acumulated" bytes en mega para poder subir los "$uploadsize" bytes del backup"
-    for dfile in ${todelete[@]}
+    for dfile in "${todelete[@]}"
     do
         echo "Borrando del repositorio "$dfile" para hacer hueco"
         rclone  delete --mega-user $(gpg -dq --default-recipient-self $HOME/.gnupg/megauser.asc| cat) --mega-pass $(gpg -dq --default-recipient-self $HOME/.gnupg/megacred.asc| cat|rclone obscure -) megaupload:/$dfile
