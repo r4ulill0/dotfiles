@@ -19,7 +19,7 @@ mappings.general_mappings()
 
 -- CONFIGURACION DE TREESITTER
 require('nvim-treesitter.install').compilers = {
-    'clang++'
+    '/usr/bin/clang++'
 }
 require('nvim-treesitter.configs').setup {
     highlight = {
