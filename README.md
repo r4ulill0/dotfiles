@@ -66,6 +66,7 @@ graph TD;
 
 #### Utilidades Systemd
 
+ Es importante ejecutar estas unidades como usuarios (usando la opción **--user**) para que systemd pueda tener en contexto todos los archivos del directorio de usuario
  - backup.timer y backup.service para realizar copias de seguridad
 
 ## TODOs
