@@ -19,3 +19,15 @@
 .config/obs-studio/profiler_data/
 .config/obs-studio/plugin_config/obs-browser/
 .config/obs-studio/basic/profiles/**/service.json
+.config/systemd/user/*.target.wants/
+.config/filezilla
+.config/heroic
+.config/menus
+.config/unity3d
+.config/transmission
+.config/lutris/games
+.config/lutris/runners
+.config/Epic
+.config/Unreal\ Engine/
+
+
