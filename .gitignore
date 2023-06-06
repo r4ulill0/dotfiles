@@ -29,5 +29,6 @@
 .config/lutris/runners
 .config/Epic
 .config/Unreal\ Engine/
+__pycache__
 
 

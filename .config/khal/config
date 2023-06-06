@@ -1,0 +1,22 @@
+[calendars]
+
+[[cumples]]
+path = $CALENDARS_DIR/cumples
+type = calendar
+
+[[private]]
+path = $CALENDARS_DIR/private
+type = calendar
+
+[locale]
+timeformat = %H:%M
+dateformat = %d/%m/%Y
+longdateformat = %d/%m/%Y
+datetimeformat = %d/%m/%Y %H:%M
+longdatetimeformat = %d/%m/%Y %H:%M
+
+[default]
+default_calendar = private
+
+[view]
+min_calendar_display = 1

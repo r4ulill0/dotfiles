@@ -49,6 +49,7 @@ graph TD;
 
 ## Variables del sistema
  En la documentación son referenciadas con el prefijo $ pero en windows se definen sin él.
+ En linux los valores por defecto se definen en .config/env_var.sh y se cargan en .bash_profile.
 
 ### Neovim / Vim
 
@@ -56,7 +57,7 @@ graph TD;
 | -------- | ---- | ------------- |
 | XDG_CONFIG_HOME | ~/.config | Solo es necesario en windows (aunque puede ser conveniente ponerlo en linux si no pilla la configuración de primeras), y en vez de ~ es mejor poner a mano C:\Users\usuario|
 | LANG	| en_US.utf-8 | Esto afecta a la configuración de cómo se muestran las fechas para más info :help language|
-| ZK_NOTEBOOK_DIR | ~/zettelkasten-knowledge-database | Exportada por defecto en .bashrc |
+| ZK_NOTEBOOK_DIR | ~/zettelkasten-knowledge-database | Exportada por defecto en .config/env_var.sh |
 
 ### Linux
 
