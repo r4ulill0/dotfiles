@@ -29,6 +29,7 @@
 .config/lutris/runners
 .config/Epic
 .config/Unreal\ Engine/
+.config/vlc
 __pycache__
 
 

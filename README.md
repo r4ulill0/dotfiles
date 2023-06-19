@@ -64,6 +64,7 @@ graph TD;
 | Variable |Valor | Observaciones |
 | -------- | ---- | ------------- |
 | BACKUPDIRS | Lista de los directorios (separados por ':' como en $PATH) que vayan a ser tratados por el script de backup | |
+| CALENDARS_DIR | Directorio dónde se almacenan los calendarios | Carpeta con subcarpetas llenas de .ics |
 
 #### Utilidades Systemd
 
