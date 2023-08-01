@@ -72,12 +72,13 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
 bindsym $mod+d exec "rofi -modi drun,run -show drun -theme purple"
-bindsym $mod+m exec "cat $HOME/.config/rofi/emojis/emojis.txt | rofi -dmenu -i -matching fuzzy -theme $HOME/.config/rofi/emojis/emojis.rasi | awk '{printf $1}'| xclip -selection clipboard"
+bindsym $mod+semicolon exec "cat $HOME/.config/rofi/emojis/emojis.txt | rofi -dmenu -i -matching fuzzy -theme $HOME/.config/rofi/emojis/emojis.rasi | awk '{printf $1}'| xclip -selection clipboard"
 bindsym $mod+p exec "randrConf=$(autorandr --detected | rofi -dmenu -matching prefix) && autorandr $randrConf"
+bindsym Shift+Print exec "maim -s  | xclip -selection clipboard -t image/png"
 bindsym Print exec "maim -s $HOME/utils/capturasDePantalla/$(date +%Y-%m-%d_%s).png"
 bindsym $mod+Print exec "maim $HOME/utils/capturasDePantalla/$(date +%Y-%m-%d_%s).png"
 bindsym $mod+b exec "alacritty -e bluetoothctl"
-bindsym $mod+apostrophe exec "alacritty -e pulsemixer"
+bindsym $mod+m exec "alacritty -e pulsemixer"
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
