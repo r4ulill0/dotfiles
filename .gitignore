@@ -31,5 +31,5 @@
 .config/Unreal\ Engine/
 .config/vlc
 __pycache__
-
+.config/custom_alias.sh
 

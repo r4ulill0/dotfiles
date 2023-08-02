@@ -5,6 +5,7 @@ fi
 
 { eval `ssh-agent -s`; ssh-add $HOME/.ssh/github; } &>/dev/null
 
+test -f $HOME/.config/custom_alias.sh && source $HOME/.config/custom_alias.sh
 source $HOME/.config/colors.sh
 PROMPT_COMMAND=__prompt_command
 __prompt_command() {
