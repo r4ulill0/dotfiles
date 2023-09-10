@@ -7,6 +7,7 @@ fi
 
 test -f $HOME/.config/custom_alias.sh && source $HOME/.config/custom_alias.sh
 source $HOME/.config/colors.sh
+# Para mostrar con el color del dolar si el resultado del anterior comando fue erroneo
 PROMPT_COMMAND=__prompt_command
 __prompt_command() {
     local SALIDA="$?"
@@ -20,3 +21,17 @@ __prompt_command() {
 
     PS1+="${colReset}\n"
 }
+
+# Modo vi activado por defecto (emacs te destroza los dedos con tanto Ctrl+Key
+set -o vi
+# Para editar la entrada de comandos en $EDITOR sin que se ejecute directamente
+_edit_command_without_executing() {
+    local editor="${EDITOR:-nano}"
+    tmpf="$(mktemp)"
+    printf '%s\n' "$READLINE_LINE" > "$tmpf"
+    "$editor" "$tmpf"
+    READLINE_LINE="$(<"$tmpf")"
+    READLINE_POINT="${#READLINE_LINE}"
+    rm -f "$tmpf"  # -f por si hay alias de rm='rm -i'
+}
+bind -m "vi" -x '"v":_edit_command_without_executing'
