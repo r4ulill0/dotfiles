@@ -1,0 +1,62 @@
+[note]
+
+template = "default.md"
+
+[extra]
+
+#key = "value"
+
+
+# GROUP OVERRIDES
+#
+# You can override global settings from [note] and [extra] for a particular
+# group of notes by declaring a [group."<name>"] section.
+#
+# Specify the list of directories which will automatically belong to the group
+# with the optional `paths` property.
+#
+# Omitting `paths` is equivalent to providing a single path equal to the name of
+# the group. This can be useful to quickly declare a group by the name of the
+# directory it applies to.
+
+#[group."<NAME>"]
+#paths = ["<DIR1>", "<DIR2>"]
+#[group."<NAME>".note]
+#filename = "{{format-date now}}"
+#[group."<NAME>".extra]
+#key = "value"
+[group.guion]
+paths = ["guiones"]
+[group.guion.note]
+filename = "guiones/{{id}}-{{slug title}}"
+template = "guion.md"
+
+[group.diario]
+paths = ["diario"]
+[group.diario.note]
+filename = "diario/{{format-date now}}"
+template = "diario.md"
+
+
+# MARKDOWN SETTINGS
+[format.markdown]
+
+hashtags = true
+colon-tags = false
+multiword-tags = false
+
+
+[tool]
+
+[lsp]
+[lsp.diagnostics]
+dead-link = "error"
+
+[lsp.completion]
+
+
+[filter]
+
+[alias]
+diario = 'zk new --no-input --group diario'
+guion = 'zk new --group guion --title="$@"'
