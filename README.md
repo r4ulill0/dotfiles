@@ -10,6 +10,7 @@
  - El script wifi-wakeup (para hacer funcionar el driver wifi MT7630E) necesita tener permisos de ejecución y estar en /lib/systemd/system-sleep/wifi-wakeup para funcionar. Con enlace simbólico funciona también.
  - Para instalar correctamente la configuracion de teclado del moonlander, ejecutar `localectl set-x11-keymap us pc105 dvorak Compose`. La opción Compose permite añadir las deadkeys del archivo .XCompose al layout.
  - Es importante crear la estructura de carpetas (ver subsección) correctamente para que funcionen ciertos scripts, configuraciones y variables del sistema.
+ - Para que polybar pueda cargar bien el modulo de batería bluetooth es necesario activar `Experimental = true` en `/etc/bluetooth/main.conf`.
 
 ### Estructura de carpetas
 ```mermaid
