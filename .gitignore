@@ -30,6 +30,7 @@
 .config/Epic
 .config/Unreal\ Engine/
 .config/vlc
+.config/lazygit/state.yml
 __pycache__
 .config/custom_alias.sh
 
