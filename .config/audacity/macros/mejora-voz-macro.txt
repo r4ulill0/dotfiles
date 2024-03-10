@@ -1,0 +1,4 @@
+Compressor:AttackTime="0.2" NoiseFloor="-40" Normalize="1" Ratio="2" ReleaseTime="1" Threshold="-12" UsePeak="0"
+FilterCurve:f0="88.851557" f1="100.31815" f10="5903.0974" f11="6781.4891" f2="184.05683" f3="200.72669" f4="1831.3095" f5="2014.5603" f6="2014.5603" f7="3478.5274" f8="3859.9285" f9="4963.3345" FilterLength="8191" InterpolateLin="0" InterpolationMethod="B-spline" v0="0.084506989" v1="4.3098602" v10="-2.2816925" v11="0.084506989" v2="4.1408443" v3="0.25352097" v4="0.084506989" v5="3.1267605" v6="3.1267605" v7="2.9577465" v8="0.084506989" v9="0.084506989"
+Limiter:GAIN-L="0" GAIN-R="0" HOLD="10" MAKEUP="No" THRESH="-3" TYPE="SoftLimit"
+Normalize:ApplyGain="1" PeakLevel="-1" RemoveDcOffset="1" StereoIndependent="0"
