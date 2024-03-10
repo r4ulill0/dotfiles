@@ -31,6 +31,14 @@
 .config/Unreal\ Engine/
 .config/vlc
 .config/lazygit/state.yml
+.config/SideQuest/
+.config/Valve/
+.config/VirtualBox/
+.config/alvr/
+.config/ibus/
+.config/openvr/
+.config/mozc/
+
 __pycache__
 .config/custom_alias.sh
 
