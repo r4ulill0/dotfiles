@@ -46,8 +46,10 @@ do
         rclone  delete --mega-user $(gpg -dq --default-recipient-self $HOME/.gnupg/megauser.asc| cat) --mega-pass $(gpg -dq --default-recipient-self $HOME/.gnupg/megacred.asc| cat|rclone obscure -) megaupload:/$dfile
     done
     rclone  copy --mega-user $(gpg -dq --default-recipient-self $HOME/.gnupg/megauser.asc| cat) --mega-pass $(gpg -dq --default-recipient-self $HOME/.gnupg/megacred.asc| cat|rclone obscure -) $zipfile megaupload:
+    exito=$?
     rm $zipfile $tarfile
     echo ${array[index]}" backed up correctly"
 done
+exit $exito
 # TODO if error > display it on next boot
 # until the backup completes correctly
