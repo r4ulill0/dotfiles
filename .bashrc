@@ -5,6 +5,9 @@ fi
 
 { eval `ssh-agent -s`; ssh-add $HOME/.ssh/github; } &>/dev/null
 
+# Importante poner los alias antes de los custom para poder pisar los generales
+alias mv='mv -i'
+
 test -f $HOME/.config/custom_alias.sh && source $HOME/.config/custom_alias.sh
 source $HOME/.config/colors.sh
 # Para mostrar con el color del dolar si el resultado del anterior comando fue erroneo
