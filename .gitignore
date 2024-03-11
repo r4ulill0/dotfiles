@@ -38,6 +38,7 @@
 .config/ibus/
 .config/openvr/
 .config/mozc/
+.config/fcitx5/conf/cache*
 
 __pycache__
 .config/custom_alias.sh
