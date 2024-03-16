@@ -21,7 +21,11 @@ font pango:tty-hack 8
 
 # Personalizacion añadida
 
-default_border pixel
+default_border pixel 1
+gaps inner 8 
+gaps outer 8 
+hide_edge_borders smart
+smart_gaps on
 
 
 exec_always mainDetected=$(autorandr --detected |grep ^main) && autorandr $mainDetected # Usamos preferentemente el perfil main (para no pillar multi sin querer al matchear ambos)
@@ -36,7 +40,7 @@ exec_always $HOME/.dotfiles/scripts/huion_mappings.sh
 #exec aw-watcher-window &
 
 floating_minimum_size 75 x 50
-floating_maximum_size 640 x 480 # Para que los popUps cojan en pantalla
+floating_maximum_size 900 x 500 # Para que los popUps cojan en pantalla
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -206,4 +210,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-
+# APPS CONFIGURATION
+# STEAM
+for_window [class="steam"] floating enable
+for_window [class="steam"] move container to workspace 2
+for_window [class="steam_app_1202540"] floating enable
+for_window [class="steam_app_1202540"] resize 1600 900
