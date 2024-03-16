@@ -33,7 +33,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
 exec_always --no-startup-id fcitx5 -d
 exec_always picom -b
 exec_always feh --no-fehbg --bg-fill --randomize ~/utils/wallpapers/*
-exec_always conky
+exec_always "killall conky;conky"
 exec_always $HOME/.dotfiles/scripts/huion_mappings.sh 
 #exec_always aw-server & # Activity watch 
 #exec aw-watcher-afk &
