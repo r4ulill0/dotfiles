@@ -19,6 +19,7 @@ mappings.general_mappings()
 
 -- CONFIGURACION DE TREESITTER
 require('nvim-treesitter.install').compilers = {
+    "gcc",
     '/usr/bin/clang++'
 }
 require('nvim-treesitter.configs').setup {
