@@ -3,6 +3,8 @@
 
 ## Resumen
 
+**Valor**:
+
 **Estado**: En construcción
 
 **Miniatura**:
