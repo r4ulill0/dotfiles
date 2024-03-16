@@ -39,6 +39,8 @@
 .config/openvr/
 .config/mozc/
 .config/fcitx5/conf/cache*
+.config/kdenliverc
+.config/kdenlive-layoutsrc
 
 __pycache__
 .config/custom_alias.sh
