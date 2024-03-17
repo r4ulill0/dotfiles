@@ -8,6 +8,13 @@ fi
 # Importante poner los alias antes de los custom para poder pisar los generales
 alias mv='mv -i'
 
+#alias para añadir color
+alias diff='diff --color=auto'
+alias rg='rg --color=auto'
+alias grep='grep --color=auto'
+alias ip='ip -color=auto'
+alias ls='ls --color=auto'
+
 test -f $HOME/.config/custom_alias.sh && source $HOME/.config/custom_alias.sh
 source $HOME/.config/colors.sh
 # Para mostrar con el color del dolar si el resultado del anterior comando fue erroneo
