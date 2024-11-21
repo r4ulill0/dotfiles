@@ -18,7 +18,7 @@ do
     tar -c -f $tarfile ${array[index]}
     7z a $zipfile $tarfile
     uploadsize=$(du -b $zipfile | awk -F' ' '{print $1}')
-    if (( $uploadsize>$megasize )); then echo "El backup es más grande que el espacio disponible";return 1; fi
+    if (( $uploadsize>$megasize )); then echo "El backup es más grande que el espacio disponible";exit 1; fi
     sizes=($(rclone  ls --mega-user $(gpg -dq --default-recipient-self $HOME/.gnupg/megauser.asc| cat) --mega-pass $(gpg -dq --default-recipient-self $HOME/.gnupg/megacred.asc| cat|rclone obscure -) megaupload: | awk '{print $1}'))
     names=($(rclone  ls --mega-user $(gpg -dq --default-recipient-self $HOME/.gnupg/megauser.asc| cat) --mega-pass $(gpg -dq --default-recipient-self $HOME/.gnupg/megacred.asc| cat|rclone obscure -) megaupload: | awk '{print $2}'))
     total=0
