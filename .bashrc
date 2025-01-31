@@ -7,6 +7,15 @@ fi
 
 # Importante poner los alias antes de los custom para poder pisar los generales
 alias mv='mv -i'
+alias rename='perl-rename' # para usar el rename bueno en vez de la implementacion rara de arch
+aliman() {
+    if [[ $@ == "rename" ]]; then
+        command man perl-rename
+    else
+        command man "$@"
+    fi
+}
+alias man=aliman
 
 #alias para añadir color
 alias diff='diff --color=auto'
