@@ -31,3 +31,6 @@ mods = "Shift|Alt"
 [window]
 dynamic_title = false
 title = "Alacritty"
+
+[font]
+size=13
