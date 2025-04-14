@@ -72,6 +72,11 @@ graph TD;
  Es importante ejecutar estas unidades como usuarios (usando la opción **--user**) para que systemd pueda tener en contexto todos los archivos del directorio de usuario
  - backup.timer y backup.service para realizar copias de seguridad
 
+ Las siguientes configuraciones de módulos del kernel pueden ser cargados por systemd.
+ Para ello copiarlos en /etc/modules-load.d/ 
+
+ - 60-X670-P.conf da soporte a los sensores de la placa base X670-P.
+
 ## TODOs
 
  - Crear un script que automatice la creación de los enlaces simbólicos
