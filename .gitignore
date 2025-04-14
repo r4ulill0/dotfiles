@@ -42,6 +42,11 @@
 .config/kdenliverc
 .config/kdenlive-layoutsrc
 
+.config/blender/4.1/config/recent-searches.txt
+.config/go/telemetry
+.config/godot/recent_dirs
+
+
 __pycache__
 .config/custom_alias.sh
 
