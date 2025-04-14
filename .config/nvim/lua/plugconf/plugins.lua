@@ -32,8 +32,6 @@ Plug 'mfussenegger/nvim-dap-python'        -- Debug adapter específico para pyt
 Plug 'williamboman/mason.nvim'             --| Manager de lsp, debuggers, linters and formatters
 Plug 'williamboman/mason-lspconfig.nvim'   --|
 Plug 'jay-babu/mason-nvim-dap.nvim'        --|
-Plug 'jay-babu/mason-null-ls.nvim'         --|
-Plug 'jose-elias-alvarez/null-ls.nvim'     -- Formatters & Linters
 
 vim.call('plug#end')
 

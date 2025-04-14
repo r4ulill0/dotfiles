@@ -123,15 +123,6 @@ mason_lspconfig.setup_handlers {
 }
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local null_ls = require("null-ls")
-
-null_ls.setup({
-    sources = {
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.diagnostics.eslint,
-        null_ls.builtins.completion.spell,
-    },
-})
 
 require('debuggers').config_debugger()
 mappings.debug_mappings()
