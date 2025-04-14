@@ -124,8 +124,9 @@ mason_lspconfig.setup_handlers {
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 
-require('debuggers').config_debugger()
-mappings.debug_mappings()
+-- No funcionan los debuggers, deshabilito para evitar errores molestos al editar archivos de texto plano
+--require('debuggers').config_debugger()
+--mappings.debug_mappings()
 
 -- CONFIGURACION DE ZK-NVIM
 require("zk").setup({
