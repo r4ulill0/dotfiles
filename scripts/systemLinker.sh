@@ -8,3 +8,4 @@ ln -s $HOME/.dotfiles/.bashrc .bashrc
 ln -s $HOME/.dotfiles/.bash_profile .bash_profile
 ln -s $HOME/.dotfiles/.config/ .config
 ln -s $HOME/.dotfiles/.xinitrc .xinitrc
+ln -s $HOME/.local/bin scripts/clean-up.sh
