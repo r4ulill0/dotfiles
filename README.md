@@ -11,6 +11,7 @@
  - Para instalar correctamente la configuracion de teclado del moonlander, ejecutar `localectl set-x11-keymap us pc105 dvorak Compose`. La opción Compose permite añadir las deadkeys del archivo .XCompose al layout.
  - Es importante crear la estructura de carpetas (ver subsección) correctamente para que funcionen ciertos scripts, configuraciones y variables del sistema.
  - Para que polybar pueda cargar bien el modulo de batería bluetooth es necesario activar `Experimental = true` en `/etc/bluetooth/main.conf`.
+ - Hay dependencias de cara al funcionamiento correcto de rofi y conky con la fuente de OpenMoji para los emoticonos.
 
 ### Estructura de carpetas
 ```mermaid

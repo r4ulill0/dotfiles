@@ -1,4 +1,7 @@
 
+configuration {
+    font: "monospace 10";
+}
 
 * {
   /* Default background color */
@@ -24,9 +27,9 @@ mainbox {
 
 element {
   background: transparent;
-  children: [ element-icon, element-text ];
+  children: [ element-text ];
 }
-element,element-text,element-icon, button {
+element,element-text, button {
     cursor: pointer;
 }
 
@@ -65,11 +68,7 @@ listview {
 element {
     border:  0;
     padding:      1px;
-    font:         "monospace 20";
     orientation: vertical;
-}
-element-icon {
-  size: 0em;
 }
 
 element  selected {
@@ -78,7 +77,6 @@ element  selected {
 }
 
 element-text {
-  font: inherit; 
   vertical-align: 0.5;
   horizontal-align: 0.5;
   width: 1px;
@@ -136,3 +134,6 @@ entry {
     placeholder-color: darkgrey/30%;
 }
 
+element-text {
+    font: "Hack 20";
+}

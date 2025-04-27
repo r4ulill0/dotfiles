@@ -33,4 +33,5 @@ dynamic_title = false
 title = "Alacritty"
 
 [font]
+normal = {family="OpenMoji monospace", style="Regular"}
 size=13
