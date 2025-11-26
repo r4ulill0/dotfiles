@@ -37,13 +37,12 @@ vim.opt.completeopt = {'menu', 'menuone', 'noselect'}               -- Obliga al
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  mappings.common_lsp_mappings(bufnr)
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-end
+-- Activamos los mapeos especificos de LSP *unicamente* cuando el LSP se engancha a un bufer
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(event)
+    mappings.common_lsp_mappings(event.buf)
+  end
+})
 
 -- CONFIGURACION DE AUTOCOMPLETADO (CMP)
 local cmp = require 'cmp'
@@ -101,7 +100,7 @@ local servers = {
 	clangd = {},
 	eslint = {},
 	texlab = {},
-
+    jdtls = {},
     lua_ls = {
         Lua = {
             workspace = {checkThirdParty = false },
@@ -111,15 +110,6 @@ local servers = {
 }
 mason_lspconfig.setup {
     ensure_installed = vim.tbl_keys(servers)
-}
-mason_lspconfig.setup_handlers {
-    function(server_name)
-        require('lspconfig')[server_name].setup {
-            on_attach = on_attach,
-            capabilities = capabilities,
-            settings = servers[server_name]
-        }
-    end
 }
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
@@ -133,7 +123,6 @@ require("zk").setup({
     picker = "telescope",
     lsp = {
       config = {
-        on_attach = on_attach,
         capabilities = capabilities,
       },
     },
