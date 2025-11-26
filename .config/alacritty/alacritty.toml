@@ -23,10 +23,20 @@ background = "#10100E"
 foreground = "#C6C6C4"
 
 [[keyboard.bindings]]
+action = "CreateNewWindow"
+key = "N"
+mods = "Control|Alt"
+
+[[keyboard.bindings]]
 action = "ToggleViMode"
 key = "Space"
 mode = "~Search"
-mods = "Shift|Alt"
+mods = "Control|Alt"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "P"
+mode = "Vi"
 
 [window]
 dynamic_title = false
