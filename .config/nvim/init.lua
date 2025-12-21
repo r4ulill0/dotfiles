@@ -17,6 +17,9 @@ mappings.general_mappings()
 -- nnoremap <Space> <nop>
 -- let mapleader = " "
 
+-- CONFIGURACION DEL NAVEGADOR NATIVO (netrw)
+vim.g.netrw_liststyle = 3 -- explorador estilo arbol jerarquico
+
 -- CONFIGURACION DE TREESITTER
 require('nvim-treesitter.install').compilers = {
     "gcc",
