@@ -1,0 +1,25 @@
+window {
+    padding: 0;
+    width: 40%;
+}
+
+mainbox {
+    children: [prompt,entry];
+    background-color: #170a2b;
+    border-color: #10061f;
+    border: 10;
+}
+
+prompt {
+    text-color: #30f043;
+    horizontal-align: 1;
+    expand:true;
+    orientation: horizontal;
+}
+
+entry {
+    text-color: #07f51f;
+    placeholder: "";
+    horizontal-align: 0.5;
+}
+

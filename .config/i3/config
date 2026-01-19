@@ -83,7 +83,7 @@ bindsym Print exec "maim -s $HOME/utils/capturasDePantalla/$(date +%Y-%m-%d_%s).
 bindsym $mod+Print exec "maim $HOME/utils/capturasDePantalla/$(date +%Y-%m-%d_%s).png"
 bindsym $mod+b exec "alacritty -e bluetoothctl"
 bindsym $mod+m exec "alacritty -e pulsemixer"
-bindsym $mod+t exec "$HOME/.dotfiles/scripts/timer.sh $(rofi -dmenu -p \\"Introduce temporizador ([HH]:[MM]:[SS]):\\")"
+bindsym $mod+t exec "$HOME/.dotfiles/scripts/timer.sh $(rofi -dmenu -p \\"Introduce temporizador ([HH]:[MM]:[SS]):\\" -config $HOME/.config/rofi/script-input.rasi) "
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
